@@ -35,4 +35,13 @@ class Book extends Model
             'rented_by' => $user
         ]);
     }
+
+    public function evict(): void
+    {
+        $this->update([
+            'rented_from' => null,
+            'rented_until' => null,
+            'rented_by' => null
+        ]);
+    }
 }

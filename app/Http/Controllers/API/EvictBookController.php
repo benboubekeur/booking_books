@@ -11,8 +11,10 @@ class EvictBookController
     {
     }
 
-    public function __invoke(EvictBookRequest $request)
+    public function __invoke(EvictBookRequest $data)
     {
+        $this->service->evict($data);
 
+        return response()->noContent();
     }
 }
