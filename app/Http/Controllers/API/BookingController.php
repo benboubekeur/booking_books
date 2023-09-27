@@ -13,10 +13,10 @@ class BookingController
     {
     }
 
-    public function __invoke(RentingRequest $request)
+    public function __invoke(RentingRequest $data)
     {
 
-        $this->service->book();
+        $this->service->rent($data);
 
         return response()->noContent();
     }

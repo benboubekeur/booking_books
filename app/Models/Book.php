@@ -11,7 +11,9 @@ class Book extends Model
     use HasFactory;
 
     public $incrementing = false;
+
     protected $primaryKey = 'isbn';
+    protected $fillable = ['rented_until', 'rented_from', 'rented_by'];
 
     public function scopeRentable($query, $from)
     {
@@ -25,4 +27,12 @@ class Book extends Model
         return $query->where('isbn', $isbn);
     }
 
+    public function rent(string $from, string $to, int $user): void
+    {
+        $this->update([
+            'rented_from' => $from,
+            'rented_until' => $to,
+            'rented_by' => $user
+        ]);
+    }
 }
