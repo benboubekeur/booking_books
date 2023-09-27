@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('books', function (Blueprint $table) {
             $table->unsignedBigInteger('isbn')->primary();
+            $table->unsignedBigInteger('author_id')->primary();
             $table->string('title');
             $table->date('published_at');
             $table->unsignedBigInteger('rented_by')->nullable();

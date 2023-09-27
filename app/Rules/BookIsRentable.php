@@ -18,7 +18,9 @@ class BookIsRentable implements ValidationRule, DataAwareRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $book = Book::isbn($this->data['book'])->rentable()->first();
+        $book = Book::isbn($this->data['book'])
+            ->rentable($this->data['from'])
+            ->first();
 
         if (is_null($book)) {
             $fail('The book is not rentable.');

@@ -15,8 +15,9 @@ class Book extends Model
 
     public function scopeRentable($query, $from)
     {
-        return $query->whereNull('rented_to')
-            ->orWhere('rented_to', '<=', $from);
+        info($from);
+        return $query->whereNull('rented_from')
+            ->orWhereDate('rented_until', '<=', $from);
     }
 
     public function scopeIsbn($query, $isbn)

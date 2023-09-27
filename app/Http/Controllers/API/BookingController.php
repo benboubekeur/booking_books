@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Requests\BookingRequest;
+use App\Http\Requests\RentingRequest;
 use App\Services\BookingService;
 
 class BookingController
@@ -12,9 +13,9 @@ class BookingController
     {
     }
 
-    public function __invoke(BookingRequest $request)
+    public function __invoke(RentingRequest $request)
     {
-        dd('sssssss');
+
         $this->service->book();
 
         return response()->noContent();
